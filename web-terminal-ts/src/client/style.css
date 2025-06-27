@@ -1,0 +1,90 @@
+/* style.css */
+/* Ensure html and body take up full viewport height and prevent overflow */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Prevents scrollbars from appearing on the main body */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    background-color: #1e1e1e; /* Set background color consistently */
+    color: #d4d4d4; /* Default text color */
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; /* Consistent font */
+}
+
+/* Body as a flex container for terminal and status bar */
+body {
+    display: flex;
+    flex-direction: column; /* Stacks terminal container and status bar vertically */
+}
+
+/* Terminal container to take all available space, and also a flex container */
+#terminal-container {
+    flex: 1; /* Allows this container to grow and fill available vertical space */
+    display: flex;
+    flex-direction: column; /* Makes it a flex container for the #terminal div */
+    overflow: hidden; /* Essential to hide any overflow from terminal content */
+    min-height: 0; /* Crucial for flex items to prevent them from taking too much space */
+    padding: 0; /* Remove padding here to let xterm apply its own padding directly */
+}
+
+/* The actual xterm.js div, to fill its container */
+#terminal {
+    flex: 1; /* Allows the xterm terminal to fill its container */
+    height: 100%; /* Explicitly set height to 100% of its parent (#terminal-container) */
+    width: 100%; /* Explicitly set width to 100% of its parent */
+    overflow: hidden; /* Crucial to let xterm.js manage its own internal scroll */
+    position: relative; /* Sometimes helps xterm.js internal rendering */
+}
+
+/* Xterm.js internal elements - ensure no styles interfere with layout calculations */
+/*.xterm {*/
+/*    padding: 0 !important; !* Override xterm.js default padding *!*/
+/*    margin: 0 !important;  !* Override xterm.js default margin *!*/
+/*    !* xterm.js sets its own width/height based on cols/rows and character dimensions.*/
+/*       These are applied to the .xterm class itself by the library. *!*/
+/*}*/
+
+.xterm-viewport {
+    /* This is the parent of .xterm-scroll-area and *should* handle scrolling */
+    background-color: #1e1e1e !important; /* Consistent background */
+    overflow-y: auto !important; /* Make the viewport vertically scrollable */
+    position: relative; /* Often needed for proper content positioning */
+    height: 100% !important; /* Make viewport take full height of .xterm */
+    width: 100% !important; /* Make viewport take full width of .xterm */
+    border: none !important; /* Remove any border that might affect sizing */
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.xterm-scroll-area {
+    /* This element's height is dynamically set by xterm.js based on buffer content.
+       We must NOT force its height or max-height here. The .xterm-viewport's `overflow`
+       will handle its overflow if it gets too tall. */
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Status Bar styles */
+#status-bar {
+    background-color: #007acc;
+    color: white;
+    padding: 5px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    flex-shrink: 0; /* Prevent status bar from shrinking */
+    height: 30px; /* Fixed height for consistency */
+}
+
+#connection-status {
+    font-weight: bold;
+}
+
+#connection-status.connected {
+    color: #4ec9b0;
+}
+
+#connection-status.disconnected {
+    color: #f44747;
+}
