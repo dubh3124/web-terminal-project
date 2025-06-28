@@ -3744,7 +3744,7 @@ crash.log
 *.sig
 
 pkg/
-src/
+
 
 ### Puppet template
 # gitignore template for Puppet modules

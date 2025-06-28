@@ -3,7 +3,7 @@ import { WebSocketServer } from 'ws';
 import * as pty from 'node-pty';
 import * as path from 'path';
 import * as http from 'http';
-import { mcpServer } from '../mcp-server'; // Import the MCP server instance
+import { mcpServer } from '../mcpserver'; // Import the MCP server instance
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js'; // MCP HTTP Transport
 
 const app = express();
@@ -194,7 +194,7 @@ process.on('SIGTERM', () => {
         ptyProcess.kill();
     });
 
-    // Close MCP PTY if it exists (handled internally by mcp-server/index.ts)
+    // Close MCP PTY if it exists (handled internally by mcpserver/index.ts)
     // No direct action needed here, as it's managed by the mcpServer module.
 
     server.close(() => {

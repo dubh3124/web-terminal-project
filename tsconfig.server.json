@@ -18,7 +18,8 @@
   },
   "include": [
     "src/server/**/*",     // <--- Keep server files
-    "src/mcp-server/**/*"  // <--- Explicitly include mcp-server files
+    "src/mcpserver/**/*"
+    // <--- Explicitly include mcpserver files
   ],
   "exclude": [
     "src/client",          // Exclude client files as webpack handles them
