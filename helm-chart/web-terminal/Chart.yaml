@@ -1,0 +1,27 @@
+apiVersion: v2
+name: web-terminal-ts
+description: A web-based terminal application built with TypeScript, xterm.js, Node.js, and Docker.
+type: application
+version: 1.0.0
+appVersion: "1.0.0" # This is the version of the application being deployed (your software's version)
+
+kubeVersion: ">= 1.16.0-0" # Minimum Kubernetes version required
+
+maintainers:
+  - name: Your Name
+    email: your.email@example.com
+
+keywords:
+  - terminal
+  - websocket
+  - web
+  - xterm
+  - nodejs
+  - typescript
+
+# Optional: Links to relevant project documentation or repositories
+sources:
+  - https://github.com/your-repo/web-terminal-ts # Replace with your actual repository
+
+# Optional: Defines chart dependencies if your application relies on other Helm charts
+dependencies: []

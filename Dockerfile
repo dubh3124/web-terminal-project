@@ -81,4 +81,4 @@ EXPOSE 8080
 USER termuser
 
 # Start the application
-CMD ["node", "dist/server.js"]
+CMD ["node", "dist/server/server.js"]
